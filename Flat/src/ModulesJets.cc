@@ -98,6 +98,8 @@ void PandaAnalyzer::JetBasics()
           if (DeltaR2(gen.eta(), gen.phi(), jet.eta(), jet.phi()) < 0.09) {
             int apdgid = abs(gen.pdgid);
             genpt = gen.pt();
+            geneta = gen.eta();
+            genphi = gen.phi();
             if (apdgid == 4 || apdgid == 5) {
               flavor = apdgid;
               break;
@@ -137,6 +139,8 @@ void PandaAnalyzer::JetBasics()
         if (analysis->hbb || analysis->monoh) {
           gt->jetGenFlavor[cleanedJets.size()-1] = flavor;
           gt->jetGenPt    [cleanedJets.size()-1] = genpt ;
+          gt->jetGenEta   [cleanedJets.size()-1] = geneta;
+          gt->jetGenPhi   [cleanedJets.size()-1] = genphi;
         }
 
         if (cleanedJets.size()<3) {

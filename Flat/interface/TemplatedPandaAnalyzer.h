@@ -10,6 +10,8 @@ void PandaAnalyzer::MatchGenJets(T& genJets)
     for (auto &gen : genJets) {
       if (DeltaR2(gen.eta(), gen.phi(), reco->eta(), reco->phi()) < 0.09) {
         gt->jetGenPt[i] = gen.pt();
+        gt->jetGenEta[i] = gen.eta();
+        gt->jetGenPhi[i] = gen.phi();
         gt->jetGenFlavor[i] = gen.pdgid;
         break;
       }

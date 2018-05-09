@@ -143,6 +143,8 @@ void GeneralTree::Reset() {
     jetHadFrac[iJ] = -1;
     jetNLep[iJ] = -99;
     jetGenPt[iJ] = -99;
+    jetGenEta[iJ] = -99;
+    jetGenPhi[iJ] = -99;
     jetGenFlavor[iJ] = -99;
   }
   for (unsigned int iL=0; iL!=NLEP; ++iL) {
@@ -630,6 +632,8 @@ void GeneralTree::WriteTree(TTree *t) {
     Book("jetHadFrac",jetHadFrac,"jetHadFrac[nJot]/F");
     Book("jetNLep",jetNLep,"jetNLep[nJot]/I");
     Book("jetGenPt",jetGenPt,"jetGenPt[nJot]/F");
+    Book("jetGenEta",jetGenEta,"jetGenEta[nJot]/F");
+    Book("jetGenPhi",jetGenPhi,"jetGenPhi[nJot]/F");
     Book("jetGenFlavor",jetGenFlavor,"jetGenFlavor[nJot]/I");
     Book("fj1sjPt",fj1sjPt,"fj1sjPt[2]/F");
     Book("fj1sjPhi",fj1sjPhi,"fj1sjPhi[2]/F");
