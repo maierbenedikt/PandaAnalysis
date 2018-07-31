@@ -47,11 +47,7 @@ for k,v in processes.iteritems():
         pds[v[0]] = (k,-1)
 
 submit_name = environ['SUBMIT_NAME']
-user = environ['USER']
-split_dir = '/tmp/%s/split/%s/'%(user, submit_name)
-merged_dir = '/tmp/%s/merged/%s/'%(user, submit_name)
-for d in [split_dir, merged_dir]:
-    system('mkdir -p ' + d)
+user = environ['SUBMIT_USER']
 
 inbase = environ['SUBMIT_OUTDIR']
 outbase = environ['PANDA_FLATDIR']
@@ -187,11 +183,11 @@ for pd in arguments:
         args[pd] = [pd]
 
 for pd in args:
-    unmergedFiles = glob("{0}/{1}_*.root".format(environ['SUBMIT_OUTDIR'],pd))
-    unmergedSize = 0
-    for unmergedFile in unmergedFiles:
-        unmergedSize += path.getsize(unmergedFile)
-    if unmergedSize > 16106127360: # 15 GB
+    unmerged_files = glob("{0}/{1}_*.root".format(environ['SUBMIT_OUTDIR'],pd))
+    unmerged_size = 0
+    for unmerged_file in unmerged_files:
+        unmerged_size += path.getsize(unmerged_file)
+    if unmerged_size > 16106127360: # 15 GB
         disk="scratch5"
     else:
         disk="tmp"
